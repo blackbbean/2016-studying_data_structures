@@ -9,46 +9,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 typedef int element;
 typedef struct Listnode{
-
-
     element data;
     struct Listnode * link;
-
-}Listnode;
-
+}Listnode; //struct that define listnode
 
 void error(char *message)
 {
-
-    fprintf(stderr,"%s\n",message);
+   fprintf(stderr,"%s\n",message);
     exit(1);
-
-}
+}   // define error function
 
 
 void insert_node(Listnode **phead,Listnode *p,Listnode *new_node)
 {
-    if(*phead==NULL)
+    if(*phead==NULL) //when the list is blank
     {
-    
         *phead = new_node;
         new_node->link = NULL;
     }
-    else if(p == NULL)
-    {
-        
+    else if(p == NULL) // trying to insert node in first position
+    {   
         new_node->link = *phead;
         *phead = new_node;
     }
     else{
-    
         new_node->link = p->link;
         p->link = new_node;
     }
-}
+} //insert node function
 
 
 void remove_node(Listnode **phead,Listnode *p,Listnode *removed)
@@ -58,8 +48,7 @@ void remove_node(Listnode **phead,Listnode *p,Listnode *removed)
     else
         p->link = removed->link;
     free(removed);
-}
-
+} //remove the node
 
 void display(Listnode *head)
 {
@@ -69,9 +58,7 @@ void display(Listnode *head)
         p=p->link;
     }
     printf("\n");
-}
-
-
+} //display the node
 
 
 Listnode *create_node(element data, Listnode *link)
@@ -93,7 +80,7 @@ Listnode* alternate_list(Listnode *l1, Listnode *l2)
     Listnode *p_l3 = l3;
    
     
-    
+ 
     
     if(l3==NULL)
     {
